@@ -1,5 +1,4 @@
 repeat wait() until game:IsLoaded()
-if getgenv().executed then return end
 
 local queue_on_teleport = queue_on_teleport or syn.queue_on_teleport or fluxus.queue_on_teleport or function(...)
     return ...
@@ -17,5 +16,6 @@ game.Players.LocalPlayer.OnTeleport:Connect(function(State)
     end
 end)
 
+if getgenv().executed then return end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TrilhaX/scriptexec/main/mainExec.lua"))()
 getgenv().executed = true
