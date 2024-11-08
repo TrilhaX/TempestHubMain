@@ -1,0 +1,19 @@
+repeat wait() until game:IsLoaded()
+if getgenv().executed then return end
+
+local queue_on_teleport = queue_on_teleport or syn.queue_on_teleport or fluxus.queue_on_teleport or function(...)
+    return ...
+end
+
+game.Players.LocalPlayer.OnTeleport:Connect(function(State)
+    if State == Enum.TeleportState.Started or State == Enum.TeleportState.InProgress then
+        queue_on_teleport([[
+            repeat wait() until game:IsLoaded()
+            wait(2)
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TrilhaX/scriptexec/main/mainExec.lua"))()
+        ]])
+    end
+end)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TrilhaX/scriptexec/main/mainExec.lua"))()
+getgenv().executed = true
