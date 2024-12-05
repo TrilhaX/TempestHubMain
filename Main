@@ -1,8 +1,5 @@
 repeat wait() until game:IsLoaded()
 wait(1)
-local ContentProvider = game:GetService("ContentProvider")
-local assets = game:GetDescendants()
-ContentProvider:PreloadAsync(assets)
 if getgenv().executed then return end
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TrilhaX/scriptexec/main/mainExec.lua"))()
 getgenv().executed = true
